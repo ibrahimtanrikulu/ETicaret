@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { UrunComponent } from './urun/urun.component';
 import { KategoriComponent } from './kategori/kategori.component';
 import { KullaniciComponent } from './kullanici/kullanici.component';
+import { AnasayfaComponent } from './anasayfa/anasayfa.component';
+import { AdminRoutingModule } from './admin-routing.module';
 
 
 
@@ -10,10 +12,12 @@ import { KullaniciComponent } from './kullanici/kullanici.component';
   declarations: [
     UrunComponent,
     KategoriComponent,
-    KullaniciComponent
+    KullaniciComponent,
+    AnasayfaComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AdminRoutingModule
   ]
 })
 export class AdminModule { }

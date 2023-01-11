@@ -1,1 +1,78 @@
-<p>register works!</p>
+<div class="flex">
+  <div class="flex flex-1 items-center justify-center py-12">
+    <div
+      class="flex flex-1 flex-col w-full max-w-md space-y-8 p-6 m-12 rounded-lg shadow-2xl dark:bg-indigo-800"
+    >
+      <div>
+        <h1
+          class="mt-6 text-center text-3xl font-bold tracking-tight text-white"
+        >
+          Kayıt Ol
+        </h1>
+      </div>
+      <hr />
+      <div class="flex flex-col flex-1 -space-y-px rounded-md shadow-sm mt-8">
+        <div class="flex-1">
+          <label for="email-address" class="sr-only">Adı</label>
+          <input
+            type="email"
+            required
+            class="relative block w-full my-2 rounded-lg border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+            placeholder="Adı"
+          />
+        </div>
+        <div class="flex-1">
+          <label for="password" class="sr-only">Soyadı</label>
+          <input
+            type="text"
+            required
+            class="relative block w-full my-2 rounded-lg border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+            placeholder="Soyadı"
+          />
+        </div>
+        <div class="flex-1">
+          <label for="email-address" class="sr-only">Email adres</label>
+          <input
+            type="email"
+            required
+            class="relative block w-full my-2 rounded-lg border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+            placeholder="Email adres"
+          />
+        </div>
+        <div class="flex-1">
+          <label for="password" class="sr-only">Sifre</label>
+          <input
+            type="password"
+            class="relative block w-full my-2 rounded-lg border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+            placeholder="Sifre"
+          />
+        </div>
+        <div class="flex-1">
+            <label for="password" class="sr-only">Sifre tekrar</label>
+            <input
+              type="password"
+              class="relative block w-full my-2 rounded-lg border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+              placeholder="Sifre tekrar"
+            />
+          </div>
+      </div>
+      <div>
+        <button
+          type="submit"
+          class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+            <svg
+              class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            ></svg>
+          </span>
+          Kayıt Ol
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

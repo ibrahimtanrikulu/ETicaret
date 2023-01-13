@@ -8,6 +8,8 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { SideBarComponent } from './layout/side-bar/side-bar.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { CommentComponent } from './comment/comment.component';
+import { BrandComponent } from './brand/brand.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +20,10 @@ import { FooterComponent } from './layout/footer/footer.component';
     SideBarComponent,
     NavbarComponent,
     FooterComponent,
+    CommentComponent,
+    BrandComponent,
   ],
   imports: [CommonModule, AdminRoutingModule],
-  exports: [AnasayfaComponent],
+  exports: [AdminRoutingModule],
 })
 export class AdminModule {}

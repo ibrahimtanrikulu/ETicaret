@@ -1,5 +1,5 @@
 import { Base } from './Base/base';
 
-export interface Category extends Base {
+export interface Brand extends Base {
   name: string;
 }

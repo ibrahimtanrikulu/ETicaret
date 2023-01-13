@@ -1,5 +1,14 @@
-<app-navbar></app-navbar>
-<app-context></app-context>
-<!-- <app-login></app-login> -->
-<!-- <app-register></app-register> -->
-<app-footer></app-footer>
+<!-- <div class="container mx-auto bg-gray-900"><router-outlet></router-outlet></div> -->
+
+<div class="grid grid-cols-1">
+  <app-navbar></app-navbar>
+  <div
+    class="grid container mx-auto grid-cols-1 h-screen lg:grid-cols-12 dark:bg-gray-900 text-white"
+  >
+    <div class="col-span-3 border-2"><app-side-bar></app-side-bar></div>
+    <div class="col-span-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

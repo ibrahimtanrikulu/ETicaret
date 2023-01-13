@@ -1,5 +1,6 @@
-import { base } from './Base/base';
+import { Base } from './Base/base';
 
-export interface Basket extends base {
-  urunler: string;
+export interface Basket extends Base {
+  urunId: number;
+  userId: number;
 }

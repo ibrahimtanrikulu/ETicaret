@@ -1,4 +1,4 @@
-export interface base {
+export interface Base {
   id: number;
   createTime: Date;
 }

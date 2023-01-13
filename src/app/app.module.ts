@@ -1,21 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AdminModule } from './admin/admin.module';
-
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServicesModule } from './service/services.module';
-import { UiModule } from './ui/ui.module';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    UiModule,
-    AdminModule,
-    ServicesModule,
+  declarations: [
+    AppComponent,
   ],
+  imports: [BrowserModule, AppRoutingModule, ServicesModule, RouterModule],
   providers: [],
   bootstrap: [AppComponent],
 })

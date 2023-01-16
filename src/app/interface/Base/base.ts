@@ -1,4 +1,4 @@
 export interface Base {
-  id: number;
-  createTime: Date;
+  id: string;
+  createTime?: Date;
 }

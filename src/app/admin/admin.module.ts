@@ -10,6 +10,7 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { CommentComponent } from './comment/comment.component';
 import { BrandComponent } from './brand/brand.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { BrandComponent } from './brand/brand.component';
     CommentComponent,
     BrandComponent,
   ],
-  imports: [CommonModule, AdminRoutingModule],
+  imports: [CommonModule, AdminRoutingModule, HttpClientModule],
   exports: [AdminRoutingModule],
 })
 export class AdminModule {}

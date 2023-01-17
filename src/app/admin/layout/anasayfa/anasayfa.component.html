@@ -1,9 +1,17 @@
 <div class="grid grid-cols-1">
-  <app-navbar></app-navbar>
-  <div class="grid grid-cols-1 lg:grid-cols-12">
+  <app-navbar (sideBarCheck)="sideBarCheck($event)"></app-navbar>
+  <div class="grid grid-cols-1 lg:grid-cols-12" *ngIf="check">
     <div class="col-span-2"><app-side-bar></app-side-bar></div>
     <div
       class="col-span-10 h-screen text-white"
+      style="background-color: #1f2937"
+    >
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-12" *ngIf="!check">
+    <div
+      class="col-span-12 h-screen text-white"
       style="background-color: #1f2937"
     >
       <router-outlet></router-outlet>

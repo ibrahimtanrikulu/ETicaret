@@ -11,6 +11,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { CommentComponent } from './comment/comment.component';
 import { BrandComponent } from './brand/brand.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,12 @@ import { HttpClientModule } from '@angular/common/http';
     CommentComponent,
     BrandComponent,
   ],
-  imports: [CommonModule, AdminRoutingModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    AdminRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   exports: [AdminRoutingModule],
 })
 export class AdminModule {}

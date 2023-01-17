@@ -35,7 +35,7 @@ export class CategoryService {
 
   Delete(category: Category) {
     return this.htttpService
-      .delete(this.firabase_url, this.jsonAd, category.id)
+      .delete(this.firabase_url, 'categori', category.id!)
       .subscribe((s) => console.log(s));
   }
 }

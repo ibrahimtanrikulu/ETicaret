@@ -33,6 +33,8 @@ export class HttpClientService {
     jsonName: string,
     id: string
   ): Observable<T> {
-    return this.httpClient.delete<T>(requestParameter + jsonName + '/' + id);
+    return this.httpClient.delete<T>(
+      requestParameter + jsonName + '/' + id + '.json'
+    );
   }
 }

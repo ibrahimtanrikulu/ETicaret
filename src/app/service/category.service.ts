@@ -28,14 +28,14 @@ export class CategoryService {
   }
 
   Add(category: Category) {
-    return this.htttpService
-      .post(this.firabase_url, this.jsonAd, category)
-      .subscribe((s) => console.log(s));
+    return this.htttpService.post(this.firabase_url, this.jsonAd, category);
   }
 
   Delete(category: Category) {
-    return this.htttpService
-      .delete(this.firabase_url, 'categori', category.id!)
-      .subscribe((s) => console.log(s));
+    return this.htttpService.delete(
+      this.firabase_url,
+      'categori',
+      category.id!
+    );
   }
 }

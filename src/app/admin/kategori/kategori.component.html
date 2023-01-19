@@ -1,32 +1,158 @@
-<div class="relative overflow-x-auto p-4 shadow-md sm:rounded-lg">
-  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-    <thead
-      class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+<div class="p-4 grid grid-cols-1">
+  <div class="grid justify-end">
+    <button
+      type="button"
+      (click)="dialogModelCheckMethod()"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
     >
-      <tr>
-        <th scope="col" class="px-6 py-3">Id</th>
-        <th scope="col" class="px-6 py-3">Kategori ismi</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        class="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
-        *ngFor="let item of tablo"
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
       >
-        <td
-          scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-        >
-          {{ item.name }}
-        </td>
-        <td class="px-6 py-4">
-          <a
-            href="#"
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-            >Edit</a
-          >
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 4.5v15m7.5-7.5h-15"
+        />
+      </svg>
+    </button>
+  </div>
+  <div class="relative overflow-auto shadow-xl rounded-md">
+    <table class="w-full text-sm text-left text-blue-100 dark:text-blue-100">
+      <thead
+        style="background-color: rgb(55, 65, 81)"
+        class="text-base text-white uppercase border-b dark:text-white"
+      >
+        <tr>
+          <th scope="col" class="px-6 py-3">Kategori ismi</th>
+          <th scope="col" class="px-6 py-3"></th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of kategoriTablo">
+        <tr class="border-b-2 text-white bg-gray-800 hover:bg-gray-700">
+          <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
+            {{ item.name }}
+          </th>
+          <td class="justify-center grid grid-flow-col py-4">
+            <button
+              (click)="dialogModelCheckMethod(item)"
+              class="text-white bg-blue-600 py-4 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-sm px-5 mr-2 focus:outline-none"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+                />
+              </svg>
+            </button>
+            <button
+              mat-raised-button
+              (click)="openDeleteDialog('250ms', '125ms', item)"
+              class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 rounded-md text-sm px-5"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+
+<ng-container *ngIf="dialogModelCheck">
+  <div
+    tabindex="1"
+    class="flex mb-10 items-center justify-center top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-auto"
+  >
+    <div class="w-full h-full max-w-2xl md:h-auto">
+      <div class="bg-white rounded-lg shadow dark:bg-gray-700">
+        <div
+          class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600"
+        >
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+            Kategori Kayıt
+          </h3>
+          <button
+            type="button"
+            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            (click)="dialogModelCheck = false"
+          >
+            <svg
+              aria-hidden="true"
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+        </div>
+        <div class="p-6 space-y-6 grid grid-cols-1">
+          <div>
+            <label
+              for="first_name"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Kategori ismi</label
+            >
+            <input
+              type="text"
+              id="first_name"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required
+              [formControl]="name"
+            />
+          </div>
+        </div>
+        <div
+          class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600"
+        >
+          <button
+            (click)="dialogModelCheck = false"
+            type="button"
+            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+          >
+            İptal
+          </button>
+          <button
+            type="button"
+            (click)="save()"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Kaydet
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

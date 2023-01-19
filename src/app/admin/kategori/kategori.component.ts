@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Category } from 'src/app/interface/categori';
 import { CategoryService } from 'src/app/service/category.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogReusableComponent } from 'src/app/base/material/dialog-reusable-component/dialog-reusable.component';
+import { IDialogModel } from 'src/app/model/dialog';
 
 @Component({
   selector: 'app-kategori',
@@ -8,9 +12,73 @@ import { CategoryService } from 'src/app/service/category.service';
   styleUrls: ['./kategori.component.scss'],
 })
 export class KategoriComponent implements OnInit {
-  tablo: any;
-  constructor(private categoriService: CategoryService) {}
+  kategoriTablo: Category[] = [];
+  kategori: Category = new Category();
+  name = new FormControl('');
+  isNew: boolean = false;
+  dialogModelCheck: boolean = false;
+
+  confirmDialogData: IDialogModel = {
+    baslik: 'Silinsin mi',
+    aciklama: 'bu kategoriyi silicekmisin',
+    hayir: 'Hayır',
+    evet: 'Evet',
+  };
+
+  constructor(
+    private categoriService: CategoryService,
+    public dialog: MatDialog
+  ) {}
+
   ngOnInit(): void {
-    this.categoriService.getAll().subscribe((s) => (this.tablo = s));
+    this.getAll();
+  }
+
+  getAll() {
+    this.categoriService.getAll().subscribe((s) => (this.kategoriTablo = s));
+  }
+
+  dialogModelCheckMethod(item?: Category) {
+    this.dialogModelCheck = true;
+    if (item) {
+      this.kategori = item;
+      this.isNew = true;
+    } else {
+      this.isNew = false;
+    }
+  }
+  save() {
+    if (!this.isNew) {
+      this.name.value ? (this.kategori.name = this.name.value) : '';
+      this.categoriService.Add(this.kategori).subscribe((s) => {
+        this.getAll();
+      });
+    } else {
+      this.name.value ? (this.kategori.name = this.name.value) : '';
+    }
+    this.kategori = new Category();
+    this.dialogModelCheck = false;
+  }
+
+  openDeleteDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string,
+    category: Category
+  ): void {
+    const result = this.dialog.open(DialogReusableComponent, {
+      width: '350px',
+      disableClose: true,
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: this.confirmDialogData,
+    });
+
+    result.afterClosed().subscribe((s) => {
+      if (s) {
+        this.categoriService.Delete(category).subscribe((s) => {
+          this.getAll();
+        });
+      }
+    });
   }
 }

@@ -8,11 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Base
-import { DialogReusableComponent } from './base/material/dialog-reusable-component/dialog-reusable.component';
-
-//Material
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
+import { DialogReusableComponent } from './base/admin/components/dialog-reusable-component/dialog-reusable.component';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [AppComponent, DialogReusableComponent],
@@ -23,10 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
     RouterModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
-    //Material
-    MatDialogModule,
-    MatButtonModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

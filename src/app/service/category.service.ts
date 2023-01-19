@@ -10,6 +10,7 @@ export class CategoryService {
   firabase_url: string =
     'https://eticaret-370207-default-rtdb.europe-west1.firebasedatabase.app/';
   jsonAd: string = 'categori.json';
+  private categoryTablo: any[] = [];
 
   constructor(private htttpService: HttpClientService) {}
 
@@ -18,6 +19,7 @@ export class CategoryService {
       .get<Category[]>(this.firabase_url, this.jsonAd)
       .pipe(
         map((res) => {
+          this.categoryTablo = res;
           const categories: Category[] = [];
           for (const key in res) {
             categories.push({ ...res[key], id: key });
@@ -37,5 +39,13 @@ export class CategoryService {
       'categori',
       category.id!
     );
+  }
+
+  update(category: Category) {
+    return this.Delete(category).subscribe((s) => {
+      return this.Add(category).subscribe((s) => {
+        return this.getAll();
+      });
+    });
   }
 }

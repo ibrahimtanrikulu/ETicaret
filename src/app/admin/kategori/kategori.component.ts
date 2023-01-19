@@ -3,8 +3,9 @@ import { FormControl } from '@angular/forms';
 import { Category } from 'src/app/interface/categori';
 import { CategoryService } from 'src/app/service/category.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogReusableComponent } from 'src/app/base/material/dialog-reusable-component/dialog-reusable.component';
+import { DialogReusableComponent } from 'src/app/base/admin/components/dialog-reusable-component/dialog-reusable.component';
 import { IDialogModel } from 'src/app/model/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-kategori',
@@ -17,6 +18,8 @@ export class KategoriComponent implements OnInit {
   name = new FormControl('');
   isNew: boolean = false;
   dialogModelCheck: boolean = false;
+
+  dataSource: any;
 
   confirmDialogData: IDialogModel = {
     baslik: 'Silinsin mi',
@@ -32,6 +35,7 @@ export class KategoriComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
+    this.dataSource = new MatTableDataSource(this.kategoriTablo);
   }
 
   getAll() {
@@ -47,14 +51,17 @@ export class KategoriComponent implements OnInit {
       this.isNew = false;
     }
   }
+
   save() {
     if (!this.isNew) {
       this.name.value ? (this.kategori.name = this.name.value) : '';
       this.categoriService.Add(this.kategori).subscribe((s) => {
         this.getAll();
+        this.kategori = new Category();
       });
     } else {
       this.name.value ? (this.kategori.name = this.name.value) : '';
+      this.categoriService.update(this.kategori);
     }
     this.kategori = new Category();
     this.dialogModelCheck = false;

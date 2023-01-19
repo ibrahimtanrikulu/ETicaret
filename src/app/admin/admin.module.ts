@@ -12,6 +12,7 @@ import { CommentComponent } from './comment/comment.component';
 import { BrandComponent } from './brand/brand.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AdminRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatTableModule,
   ],
   exports: [AdminRoutingModule],
 })

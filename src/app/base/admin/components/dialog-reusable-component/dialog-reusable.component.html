@@ -1,10 +1,17 @@
-<h1 mat-dialog-title *ngIf="data.baslik">{{ data.baslik }}</h1>
-<div mat-dialog-content *ngIf="data.aciklama">{{ data.aciklama }}</div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close *ngIf="data.hayir">
-    {{ data.hayir }}
-  </button>
-  <button mat-button mat-dialog-close="true" cdkFocusInitial *ngIf="data.evet">
-    {{ data.evet }}
-  </button>
-</div>
+<ng-container *ngIf="data">
+  <h1 mat-dialog-title *ngIf="data.baslik">{{ data.baslik }}</h1>
+  <div mat-dialog-content *ngIf="data.aciklama">{{ data.aciklama }}</div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close *ngIf="data.hayir">
+      {{ data.hayir }}
+    </button>
+    <button
+      mat-button
+      mat-dialog-close="true"
+      cdkFocusInitial
+      *ngIf="data.evet"
+    >
+      {{ data.evet }}
+    </button>
+  </div>
+</ng-container>

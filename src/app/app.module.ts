@@ -9,10 +9,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Base
 import { DialogReusableComponent } from './base/admin/components/dialog-reusable-component/dialog-reusable.component';
-import { MaterialModule } from './material/material.module';
+import { MaterialModule } from './material/material-shared.module';
+import { MatTableModule } from '@angular/material/table';
+import { DialogFormComponent } from './base/admin/components/dialog-form/dialog-form.component';
 
 @NgModule({
-  declarations: [AppComponent, DialogReusableComponent],
+  declarations: [AppComponent, DialogReusableComponent, DialogFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,6 +23,8 @@ import { MaterialModule } from './material/material.module';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
+    
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent],

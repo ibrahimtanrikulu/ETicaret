@@ -5,12 +5,15 @@ import { CategoryService } from 'src/app/service/category.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogReusableComponent } from 'src/app/base/admin/components/dialog-reusable-component/dialog-reusable.component';
 import { IDialogModel } from 'src/app/model/dialog';
+
 import { MatTableDataSource } from '@angular/material/table';
+import { CdkColumnDef } from '@angular/cdk/table';
 
 @Component({
   selector: 'app-kategori',
   templateUrl: './kategori.component.html',
   styleUrls: ['./kategori.component.scss'],
+  providers: [CdkColumnDef],
 })
 export class KategoriComponent implements OnInit {
   kategoriTablo: Category[] = [];
@@ -19,23 +22,20 @@ export class KategoriComponent implements OnInit {
   isNew: boolean = false;
   dialogModelCheck: boolean = false;
 
-  dataSource: any;
-
-  confirmDialogData: IDialogModel = {
-    baslik: 'Silinsin mi',
-    aciklama: 'bu kategoriyi silicekmisin',
-    hayir: 'Hayır',
-    evet: 'Evet',
-  };
+  displayedColumns: string[] = ['name', 'action'];
+  dataSource = new MatTableDataSource(this.kategoriTablo);
 
   constructor(
     private categoriService: CategoryService,
     public dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {
+   ngOnInit(): void {
     this.getAll();
-    this.dataSource = new MatTableDataSource(this.kategoriTablo);
+    setTimeout(() => {
+      console.log(this.kategoriTablo);
+      
+    }, 200);  
   }
 
   getAll() {
@@ -67,6 +67,12 @@ export class KategoriComponent implements OnInit {
     this.dialogModelCheck = false;
   }
 
+  confirmDialogData: IDialogModel = {
+    baslik: 'Silinsin mi',
+    aciklama: 'bu kategoriyi silicekmisin',
+    hayir: 'Hayır',
+    evet: 'Evet',
+  };
   openDeleteDialog(
     enterAnimationDuration: string,
     exitAnimationDuration: string,

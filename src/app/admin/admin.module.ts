@@ -12,7 +12,7 @@ import { CommentComponent } from './comment/comment.component';
 import { BrandComponent } from './brand/brand.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatTableModule } from '@angular/material/table';
+import { MaterialModule } from '../material/material-shared.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { MatTableModule } from '@angular/material/table';
     AdminRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatTableModule,
+    MaterialModule,
   ],
   exports: [AdminRoutingModule],
 })
